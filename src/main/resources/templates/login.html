@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{lbl.login.title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Cache-Control" content="max-age=1" />
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+	<div th:replace="fragment/header :: header "></div>
+	
+	<div class="container-fluid">
+		<div class="panel panel-default">
+			<div class="panel panel-header">
+				<h1 align="center" th:text="#{lbl.login.panel.title}"></h1>
+			</div>
+			<div class="panel panel-body">
+				<form th:action="@{/loginApp}" method="POST">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<div th:if="${param.error}">
+			                    <div class="alert alert-danger">
+			                        <span th:text="#{error.username.password.login.invalid}"></span>
+			                    </div>
+			                </div>
+							<div class="form-group">
+								<label for="username" th:text="#{lbl.username.form}"></label>
+								<input
+									class="form-control"
+									type="text"
+									id="username"
+									name="username"
+									autofocus="autofocus"
+									th:placeholder="#{lbl.username.placeholder.form}"/>
+							</div>
+							<div class="form-group">
+								<label for="password" th:text="#{lbl.password.form}"></label>
+								<input
+									class="form-control"
+									type="password"
+									id="password"
+									name="password"
+									autofocus="autofocus"
+									th:placeholder="#{lbl.password.placeholder.form}"/>
+							</div>
+							
+							<div class="form-group" align="center">
+								<input 
+									type="submit"
+									name="signIn"
+									id="btnSignIn"
+									class="btn btn-lg btn-primary" th:value="#{lbl.button.signin}"/>
+								
+								<a  id="btnSignUp" th:href="@{/registration}"
+									class="btn btn-lg btn-primary " th:text="#{lbl.button.signup}"></a>
+							</div>
+							
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script>
+	  $( function() {
+	    var tooltips = $( "[title]" ).tooltip({
+	      position: {
+	        my: "left top",
+	        at: "right+5 top-5",
+	        collision: "none"
+	      }
+	    }));
+	  </script>
+
+</body>
+</html>
